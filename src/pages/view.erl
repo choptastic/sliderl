@@ -22,7 +22,7 @@ draw_slides(Slides) ->
 draw_slide(Slide) ->
 	#section{data_fields=[markdown],body=[
 		<<"<script type='text/template'>">>,
-		wf:html_encode(Slide),
+		Slide,
 		<<"</script>">>
 	]}.
 
