@@ -1,0 +1,12 @@
+{application, sliderl,
+ [
+  {description, "A simple Markdown-based slideshow server using reveal.js"},
+  {vsn, "0.1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { sliderl_app, []}},
+  {env, []}
+ ]}.
