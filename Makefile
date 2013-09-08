@@ -1,8 +1,8 @@
 all: get-deps plugins copy-static submodules compile
 
 submodules:
-	git submodule init
-	git submodule update
+	@(git submodule init)
+	@(git submodule update)
 
 get-deps:
 	./rebar get-deps
