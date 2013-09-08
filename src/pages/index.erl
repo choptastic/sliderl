@@ -7,10 +7,7 @@ main() ->
 	#template{file="./priv/templates/bare.html"}.
 
 title() -> 
-	[
-		#link{text="Sigma Star Systems", url="http://sigma-star.com"},
-		"Slideshows"
-	].
+	"Slideshows".
 
 body() ->
 	PerPage = 12,
