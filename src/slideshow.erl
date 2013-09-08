@@ -29,7 +29,6 @@ list(Search) ->
 get(Filename) ->
 	Dir = path(),
 	SafeFilename = filename:basename(Filename),
-	error_logger:info_msg("Opening file: ~p~n",[filename:join(Dir,SafeFilename)]),
 	{ok, Bin} = file:read_file(filename:join(Dir,SafeFilename)),
 	Slides = binary:split(Bin,<<"---\n">>,[global]),
 	Slides.
@@ -47,7 +46,7 @@ slides_contain_worker(FD, Search) ->
 	case file:read_line(FD) of
 		eof -> false;
 		{ok, Line} ->
-			case binary:match(Search, Line) of
+			case re:run(Line, Search, [caseless, {capture, none}]) of
 				nomatch -> slides_contain_worker(FD, Search);
 				_ -> true
 			end
@@ -55,7 +54,6 @@ slides_contain_worker(FD, Search) ->
 
 
 extract_first_slide(Path) ->
-	error_logger:info_msg("Opening: ~p~n",[Path]),
 	{ok, FD} = file:open(Path, [read, binary]),
 	FirstSlide = read_until_line(FD, "---\n"),
 	file:close(FD),
@@ -69,7 +67,6 @@ read_until_line(FD, TargetLine) when is_binary(TargetLine) ->
 		eof -> <<>>;
 		{ok, TargetLine} -> <<>>;
 		{ok, OtherLine} ->
-			error_logger:info_msg("Line: ~p~n",[OtherLine]),
 			RestOfSlide = read_until_line(FD, TargetLine),
 			<<OtherLine/binary,RestOfSlide/binary>>
 	end.

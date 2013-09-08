@@ -34,3 +34,10 @@ slideshow_preview_and_link({File, FirstSlide}) ->
 			markdown:conv(wf:to_list(FirstSlide))
 		]}
 	]}.
+
+paginate_event(slideshows, Search, PerPage, Page) ->
+	{Count, Body} = slidelist_body(Search, Page, PerPage),
+	#paginate_event{
+		items=Count,
+		body=Body
+	}.
