@@ -25,14 +25,17 @@ Slides are separated by a single line containing just `---`
 
 # Installation
 
-  1. Install Erlang
-  2. Clone Sliderl, Build and Run:
-		```bash
+Step 1: Install Erlang
+
+Step 2: Clone Sliderl, Build and Run:
+
+```bash
 git clone git://github.com/choptastic/sliderl
 cd sliderl
 make
 make run
-		```
+```
+Then open your browser to http://127.0.0.1:8000
 
 ---
 
