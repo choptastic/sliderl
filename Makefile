@@ -1,4 +1,4 @@
-all: get-deps plugins copy-static compile
+all: get-deps plugins copy-static submodules compile
 
 submodules:
 	git submodule init
