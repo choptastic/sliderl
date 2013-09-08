@@ -6,8 +6,10 @@
 main() ->
 	#template{file="./priv/templates/bare.html"}.
 
+title() -> "Slideshows".
+
 body() ->
-	PerPage = 20,
+	PerPage = 12,
 	{Count, Body} = slidelist_body("", 1, PerPage),
 	#paginate{
 		id=slideshows,
@@ -15,13 +17,15 @@ body() ->
 		tag=slideshows,
 		body=Body,
 		num_items=Count,
-		perpage_options=[10,20,50,100]
+		perpage_options=[12,24,48]
 	}.
 
 slidelist_body(Search, Page, PerPage) ->
 	Slideshows = slideshow:list(Search),
 	Num = length(Slideshows),
-	Body = [slideshow_preview_and_link(SS) || SS <- Slideshows],
+	Start = (Page-1) * PerPage + 1,
+	LimitedSlideshows = lists:sublist(Slideshows, Start, PerPage),
+	Body = [slideshow_preview_and_link(SS) || SS <- LimitedSlideshows],
 	{Num, Body}.
 
 slideshow_preview_and_link({File, FirstSlide}) ->
