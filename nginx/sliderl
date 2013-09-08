@@ -1,0 +1,17 @@
+# You may add here your
+# server {
+#	...
+# }
+# statements for each of your virtual hosts
+
+
+server {
+	listen   80;
+
+	server_name slides.sigma-star.com;
+	access_log  /var/log/nginx/sliderl.com.access.log;
+
+	location / {
+		proxy_pass http://127.0.0.1:8001;
+	}
+}

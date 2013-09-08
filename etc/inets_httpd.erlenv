@@ -1,5 +1,5 @@
 [
-    {port, 8000},
+    {port, 8001},
     {bind_address, {0,0,0,0}},
     {server_name, "sliderl"},
     {server_root, "."},
