@@ -13,11 +13,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="/reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="/reveal.js/css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="/reveal.js/css/theme/simple.css" id="theme">
 		<link rel="stylesheet" href="/css/ss-override.css">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="/reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="/js/highlight/styles/default.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -52,6 +52,7 @@
 				progress: true,
 				history: true,
 				center: true,
+				fragments: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
@@ -61,7 +62,7 @@
 					{ src: '/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: '/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '/js/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/js/highlight/highlight.pack.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: '/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
