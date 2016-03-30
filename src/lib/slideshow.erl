@@ -31,8 +31,10 @@ get(Filename) ->
 	SafeFilename = filename:basename(Filename),
 	{ok, Bin} = file:read_file(filename:join(Dir,SafeFilename)),
 	Slides = binary:split(Bin,<<"---\n">>,[global]),
-	Slides.
-	
+	[add_frags(S) || S <- Slides].
+
+add_frags(Slide) ->
+	re:replace(Slide, "\\[frag=([0-9]+)\\]", "<!-- .element: class=\"fragment\" data-fragment-index=\"\\1\" -->", [global, caseless, {return, binary}]).
 
 
 slides_contain(_, <<>>) -> true;
